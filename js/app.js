@@ -52,21 +52,25 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function removerProduto(produtoNome) {
-    // Remover o produto do objeto do carrinho
-    delete carrinho[produtoNome];
-
-    // Atualizar a lista de produtos no carrinho
-    atualizarCarrinho();
-
-    // Atualizar o valor total
-    total -= carrinho[produtoNome].preco * carrinho[produtoNome].quantidade;
-    valorTotal.innerText = `R$${total.toFixed(2)}`;
+    // Verificar se o produto existe no carrinho
+    if (carrinho[produtoNome]) {
+      const produto = carrinho[produtoNome];
+      // Calcular o valor total a ser subtraído
+      const valorASubtrair = produto.preco * produto.quantidade;
+      // Remover o produto do objeto do carrinho
+      delete carrinho[produtoNome];
+      // Atualizar a lista de produtos no carrinho
+      atualizarCarrinho();
+      // Atualizar o valor total
+      total -= valorASubtrair;
+      valorTotal.innerText = `R$${total.toFixed(2)}`;
+    }
   }
 
   function atualizarCarrinho() {
     // Limpar a lista de produtos no DOM
     listaProdutos.innerHTML = '';
-  
+
     // Adicionar os produtos atualizados ao DOM
     for (let produtoNome in carrinho) {
       const produto = carrinho[produtoNome];
@@ -75,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
       novoProduto.innerHTML = `<span class="texto-azul">${produto.quantidade}x</span> ${produtoNome} 
       <span class="texto-azul">R$${(produto.preco * produto.quantidade).toFixed(2)}</span>
       <button class="botao-remover" onclick="removerProduto('${produtoNome}')">
-        <img src="assets/lata-de-lixo.png" alt="Remover" style=" height:20px">
+        <img src="assets/lata-de-lixo.png" alt="Remover">
       </button>`;
       listaProdutos.appendChild(novoProduto);
     }

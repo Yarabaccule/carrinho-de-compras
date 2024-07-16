@@ -113,6 +113,9 @@ input[type="number"] {
   background: url('./assets/arrow-down.svg') no-repeat right 1rem top 50%;
 }
 
+.botao-remover img{
+  height:20px ; 
+}
 
 .dropdown {
   width: 3.375rem;
@@ -240,3 +243,39 @@ input[type="number"] {
 .adicionar-produto {
   padding-bottom: 180px;
 }
+
+/* Adicione unidades de medida relativas */
+.conteudo-principal {
+  padding: 5rem 6.5rem; /* Troque por uma unidade relativa, como 5% 6.5% */
+  grid-template-columns: 1.375fr 1fr; /* Troque por uma unidade relativa, como 30% 70% */
+}
+
+/* Defina breakpoints para diferentes telas e dispositivos */
+@media (max-width: 480px) {
+ .conteudo-principal {
+    padding: 2rem 3rem; /* Ajuste o padding para telas pequenas */
+    grid-template-columns: 1fr; /* Ajuste o layout para telas pequenas */
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+ .conteudo-principal {
+    padding: 3rem 4rem; /* Ajuste o padding para telas médias */
+    grid-template-columns: 1.2fr 1fr; /* Ajuste o layout para telas médias */
+  }
+}
+
+@media (min-width: 769px) {
+ .conteudo-principal {
+    padding: 5rem 6.5rem; /* Ajuste o padding para telas grandes */
+    grid-template-columns: 1.375fr 1fr; /* Ajuste o layout para telas grandes */
+  }
+}
+
+/* Ajuste os tamanhos de fonte e espaçamentos */
+.texto-medio-azul {
+  font-size: 1.5rem; /* Troque por uma unidade relativa, como 1.5em */
+  line-height: 110%; /* Troque por uma unidade relativa, como 1.1em */
+}
+
+/* E assim por diante... */
